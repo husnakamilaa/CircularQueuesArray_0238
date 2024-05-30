@@ -62,4 +62,43 @@ public :
                 FRONT = FRONT + 1;
         }
     }
+
+    void display() {
+
+        int FRONT_Position = FRONT;
+        int REAR_Position = REAR;
+
+        // Cek apakah antrian kosong
+        if (FRONT_Position == -1) {
+            cout << "Queue is empty\n";
+            return;
+        }
+
+        cout << "\nElements in the queue are...\n";
+
+        // Jika FRONT <= REAR, iterasi dari FRONT hingga REAR
+        if (FRONT_Position <= REAR_Position) {
+            while (FRONT_Position <= REAR_Position) {
+                cout << queue_array[FRONT_Position] << "  ";
+                FRONT_Position++;
+            }
+            cout << endl;
+        }
+        else {
+            // Jika FRONT > REAR, iterasi dari FRONT hingga akhir array
+            while (FRONT_Position <= max - 1) {
+                cout << queue_array[FRONT_Position] << "  ";
+                FRONT_Position++;
+            }
+
+            FRONT_Position = 0;
+
+            // Iterasi dari awal array hingga REAR
+            while (FRONT_Position <= REAR_Position) {
+                cout << queue_array[FRONT_Position] << "  ";
+                FRONT_Position++;
+            }
+            cout << endl;
+        }
+    }
 };
